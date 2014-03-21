@@ -41,7 +41,15 @@ def compute_deriv(poly):
     poly: tuple of numbers, length > 0
     returns: tuple of numbers
     """
-    # TO DO ...
+
+    deriv = ()
+
+    for i, var in enumerate(poly):
+        if i > 0:
+            deriv = deriv + ((var * i),)
+
+    return deriv
+
 
 def compute_root(poly, x_0, epsilon):
     """
@@ -66,6 +74,10 @@ def compute_root(poly, x_0, epsilon):
     # TO DO ...
 
 
-poly = (0.0, 0.0, 5.0, 9.3, 7.0)
+#poly = (0.0, 0.0, 5.0, 9.3, 7.0)
+poly = (-13.39, 0.0, 17.5, 3.0, 1.0)
+
 x = -13
-print evaluate_poly(poly, x)
+
+#print evaluate_poly(poly, x)
+print compute_deriv(poly)
