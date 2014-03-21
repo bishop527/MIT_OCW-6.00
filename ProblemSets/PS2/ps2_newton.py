@@ -71,13 +71,36 @@ def compute_root(poly, x_0, epsilon):
     epsilon: float > 0
     returns: tuple (float, int)
     """
-    # TO DO ...
+    global count
+    global root
+    count = count + 1
+    root = evaluate_poly(poly, x_0)
+    deriv = evaluate_poly(compute_deriv(poly), x_0)
+
+    if abs(root) < epsilon:
+        return (root, count)
+    else:
+        #count = count + 1
+        x_0 = x_0 - (root / deriv)
+        compute_root(poly, x_0, epsilon)
+
+    return (root, count)
 
 
+#Problem 1
 #poly = (0.0, 0.0, 5.0, 9.3, 7.0)
-poly = (-13.39, 0.0, 17.5, 3.0, 1.0)
-
-x = -13
-
+#x = -13
 #print evaluate_poly(poly, x)
-print compute_deriv(poly)
+
+#Problem 2
+#poly = (-13.39, 0.0, 17.5, 3.0, 1.0)
+#print compute_deriv(poly)
+
+#Problem 3
+count = 0
+root = 0
+poly = (-13.39, 0.0, 17.5, 3.0, 1.0)
+x_0 = 0.1
+epsilon = .0001
+print compute_root(poly, x_0, epsilon)
+
